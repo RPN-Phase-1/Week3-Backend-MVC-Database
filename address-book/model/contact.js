@@ -21,7 +21,7 @@ class Contact {
             await db.run(
                 "UPDATE Contact SET name = ?, phoneNumber = ?, company = ?, email = ? WHERE id = ?",
                 [name, phoneNumber, company, email, id]
-            )
+            );
 
             cb(null);
         } catch (error) {
@@ -33,24 +33,23 @@ class Contact {
 
     static async delete(id, cb) {
         try {
-            await db.run(
-                "DELETE FROM Contact WHERE id = ?",
-                [id]
-            )
+            await db.run("DELETE FROM Contact WHERE id = ?", [id]);
 
             cb(null);
         } catch (error) {
-            cb(error)
+            cb(error);
         } finally {
             await db.close();
         }
     }
 
-    static async show(cb){
+    static async show(cb) {
         try {
-            const data = await db.all("SELECT * FROM Contact", []);
+            await db.all("SELECT * FROM Contact", [], (err, rows) => {
+                if (err) throw new Error(err);
 
-            cb(data);
+                cb(null, rows);
+            });
         } catch (error) {
             cb(error);
         } finally {

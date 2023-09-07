@@ -39,9 +39,11 @@ class Groups {
 
     static async show(cb) {
         try {
-            const data = await db.all("SELECT * FROM Groups", []);
+            await db.all("SELECT * FROM Groups", [], (err, rows) => {
+                if (err) throw new Error(err)
 
-            cb(null, data);
+                cb(null, rows);
+            });
         } catch (error) {
             cb(error);
         } finally {
