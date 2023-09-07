@@ -3,6 +3,7 @@ let argument = process.argv.slice(3);
 
 // contacts
 const ContactController = require("./controller/contact");
+const GroupsController = require("./controller/groups");
 
 /*
     ====================
@@ -35,5 +36,17 @@ switch(command) {
         break;
     case "show-contact":
         ContactController.showContact(argument[0]);
+        break;
+    case "create-groups":
+        GroupsController.addGroups(argument[0]);
+        break;
+    case "update-groups":
+        GroupsController.updateGroups(argument[0], argument[1]);
+        break;
+    case "delete-groups":
+        GroupsController.deleteGroups(argument[0]);
+        break;
+    case "show-groups":
+        GroupsController.showGroups();
         break;
 }

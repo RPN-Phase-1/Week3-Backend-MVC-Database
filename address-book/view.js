@@ -18,6 +18,22 @@ class AddressBookView {
     static showContactView(data) {
         console.log(data);
     }
+
+    static addGroupsView() {
+        console.log("Groups added successfully")
+    }
+
+    static updateGroupsView() {
+        console.log("Groups updated successfully")
+    }
+
+    static deleteGroupsView() {
+        console.log("Groups deleted successfully")
+    }
+
+    static showGroupsView(data) {
+        console.log(data);
+    }
 }
 
 module.exports = AddressBookView;
