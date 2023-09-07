@@ -25,6 +25,14 @@ class ContactController {
             AddressBookView.deleteContactView();
         })
     }
+
+    static showContact() {
+        Contact.showContact((err, data) => {
+            if (err) return AddressBookView.errorView(err);
+            
+            AddressBookView.showContactView(data);
+        })
+    }
 }
 
 module.exports = ContactController;

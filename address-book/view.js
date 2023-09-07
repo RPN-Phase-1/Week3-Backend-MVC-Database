@@ -14,6 +14,10 @@ class AddressBookView {
     static deleteContactView() {
         console.log("Contact deleted successfully")
     }
+
+    static showContactView(data) {
+        console.log(data);
+    }
 }
 
 module.exports = AddressBookView;

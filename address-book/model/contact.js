@@ -45,6 +45,18 @@ class Contact {
             await db.close();
         }
     }
+
+    static async showContact(cb){
+        try {
+            const data = await db.all("SELECT * FROM Contact", []);
+
+            cb(data);
+        } catch (error) {
+            cb(error);
+        } finally {
+            await db.close();
+        }
+    }
 }
 
 module.exports = Contact;

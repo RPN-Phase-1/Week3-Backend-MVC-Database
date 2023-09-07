@@ -33,4 +33,7 @@ switch(command) {
     case "delete-contact":
         ContactController.deleteContact(argument[0]);
         break;
+    case "show-contact":
+        ContactController.showContact(argument[0]);
+        break;
 }
