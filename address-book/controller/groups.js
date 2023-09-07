@@ -2,32 +2,32 @@ const Groups = require("../model/groups");
 const AddressBookView = require("../view");
 
 class GroupsController {
-    static addGroups(name) {
-        Groups.createGroups(name, (err) => {
+    static create(name) {
+        Groups.create(name, (err) => {
             if (err) AddressBookView.errorView(err);
 
             AddressBookView.addGroupsView();
         });
     }
 
-    static updateGroups(id, name) {
-        Groups.updateGroups(id, name, (err) => {
+    static update(id, name) {
+        Groups.update(id, name, (err) => {
             if (err) AddressBookView.errorView(err);
 
             AddressBookView.updateGroupsView();
         });
     }
 
-    static deleteGroups(id) {
-        Groups.deleteGroups(id, (err) => {
+    static delete(id) {
+        Groups.delete(id, (err) => {
             if (err) AddressBookView.errorView(err);
 
             AddressBookView.deleteGroupsView();
         });
     }
 
-    static showGroups() {
-        Groups.showGroups((err, data) => {
+    static show() {
+        Groups.show((err, data) => {
             if (err) AddressBookView.errorView(err);
 
             AddressBookView.showGroupsView(data);

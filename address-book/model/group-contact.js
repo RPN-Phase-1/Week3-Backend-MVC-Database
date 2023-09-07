@@ -1,7 +1,7 @@
 const db = require("../connection");
 
 class GroupContact {
-    static async createGroupContact(contactId, groupId, cb) {
+    static async create(contactId, groupId, cb) {
         try {
             await db.run(
                 "INSERT INTO GroupContact (contactId, groupId) VALUES (?, ?)",
@@ -16,7 +16,7 @@ class GroupContact {
         }
     }
 
-    static async updateGroupContact(id, contactId, groupId, cb) {
+    static async update(id, contactId, groupId, cb) {
         try {
             await db.run(
                 "UPDATE GroupContact SET contactId = ?, groupId = ? WHERE id = ?",
@@ -31,7 +31,7 @@ class GroupContact {
         }
     }
 
-    static async deleteGroupContact(id, cb) {
+    static async delete(id, cb) {
         try {
             await db.run("DELETE FROM GroupContact WHERE id = ?", [id]);
 

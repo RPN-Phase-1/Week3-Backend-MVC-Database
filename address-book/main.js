@@ -44,37 +44,37 @@ function showHelp() {
 
 switch(command) {
     case "create-contact":
-        ContactController.addContact(argument[0], argument[1], argument[2], argument[3]);
+        ContactController.create(argument[0], argument[1], argument[2], argument[3]);
         break;
     case "update-contact":
-        ContactController.updateContact(argument[0], argument[1], argument[2], argument[3], argument[4]);
+        ContactController.update(argument[0], argument[1], argument[2], argument[3], argument[4]);
         break;
     case "delete-contact":
-        ContactController.deleteContact(argument[0]);
+        ContactController.delete(argument[0]);
         break;
     case "show-contact":
-        ContactController.showContact(argument[0]);
+        ContactController.show(argument[0]);
         break;
     case "create-groups":
-        GroupsController.addGroups(argument[0]);
+        GroupsController.create(argument[0]);
         break;
     case "update-groups":
-        GroupsController.updateGroups(argument[0], argument[1]);
+        GroupsController.update(argument[0], argument[1]);
         break;
     case "delete-groups":
-        GroupsController.deleteGroups(argument[0]);
+        GroupsController.delete(argument[0]);
         break;
     case "show-groups":
-        GroupsController.showGroups();
+        GroupsController.show();
         break;
     case "create-group_contact":
-        GroupContactController.createGroupContact(argument[0], argument[1]);
+        GroupContactController.create(argument[0], argument[1]);
         break;
     case "update-group_contact":
-        GroupContactController.updateGroupContact(argument[0], argument[1], argument[2]);
+        GroupContactController.update(argument[0], argument[1], argument[2]);
         break;
     case "delete-group_contact":
-        GroupContactController.deleteGroupContact(argument[0]);
+        GroupContactController.delete(argument[0]);
         break;
     case "help":
         showHelp();

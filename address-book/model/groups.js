@@ -1,7 +1,7 @@
 const db = require("../connection");
 
 class Groups {
-    static async createGroups(name, cb) {
+    static async create(name, cb) {
         try {
             await db.run("INSERT INTO Groups (groupName) VALUES (?)", [name]);
 
@@ -13,7 +13,7 @@ class Groups {
         }
     }
 
-    static async updateGroups(id, name, cb) {
+    static async update(id, name, cb) {
         try {
             await db.run("UPDATE Groups SET groupName = ? WHERE id = ?", [name, id]);
 
@@ -25,7 +25,7 @@ class Groups {
         }
     }
 
-    static async deleteGroups(id, cb) {
+    static async delete(id, cb) {
         try {
             await db.run("DELETE FROM Groups WHERE id = ?", [id]);
 
@@ -37,7 +37,7 @@ class Groups {
         }
     }
 
-    static async showGroups(cb) {
+    static async show(cb) {
         try {
             const data = await db.all("SELECT * FROM Groups", []);
 

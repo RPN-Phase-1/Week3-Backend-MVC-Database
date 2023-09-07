@@ -1,7 +1,7 @@
 const db = require("../connection");
 
 class Contact {
-    static async addContact(name, phoneNumber, company, email, cb) {
+    static async create(name, phoneNumber, company, email, cb) {
         try {
             await db.run(
                 "INSERT INTO Contact (name, phoneNumber, company, email) VALUES (?, ?, ?, ?)",
@@ -16,7 +16,7 @@ class Contact {
         }
     }
 
-    static async updateContact(id, name, phoneNumber, company, email, cb) {
+    static async update(id, name, phoneNumber, company, email, cb) {
         try {
             await db.run(
                 "UPDATE Contact SET name = ?, phoneNumber = ?, company = ?, email = ? WHERE id = ?",
@@ -31,7 +31,7 @@ class Contact {
         }
     }
 
-    static async deleteContact(id, cb) {
+    static async delete(id, cb) {
         try {
             await db.run(
                 "DELETE FROM Contact WHERE id = ?",
@@ -46,7 +46,7 @@ class Contact {
         }
     }
 
-    static async showContact(cb){
+    static async show(cb){
         try {
             const data = await db.all("SELECT * FROM Contact", []);
 
