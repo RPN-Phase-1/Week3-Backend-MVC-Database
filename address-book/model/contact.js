@@ -33,9 +33,18 @@ class Contact {
 
     static async delete(id, cb) {
         try {
-            await db.run("DELETE FROM Contact WHERE id = ?", [id]);
+            await db.run(
+                "DELETE FROM GroupContact WHERE contactId = ?",
+                [id],
+                (err) => {
+                    if (err) throw new Error(err);
 
-            cb(null);
+                    db.run("DELETE FROM Contact WHERE id = ?", [id], (err) => {
+                        if (err) throw new Error(err);
+                        cb(null);
+                    });
+                }
+            );
         } catch (error) {
             cb(error);
         } finally {
@@ -45,11 +54,19 @@ class Contact {
 
     static async show(cb) {
         try {
-            await db.all("SELECT * FROM Contact", [], (err, rows) => {
-                if (err) throw new Error(err);
+            await db.all(
+                `
+                    SELECT * FROM Contact
+                    LEFT JOIN GroupContact ON Contact.id = GroupContact.contactId
+                    LEFT JOIN Groups ON GroupContact.groupId = Groups.id
+                `,
+                [],
+                (err, rows) => {
+                    if (err) throw new Error(err);
 
-                cb(null, rows);
-            });
+                    cb(null, rows);
+                }
+            );
         } catch (error) {
             cb(error);
         } finally {

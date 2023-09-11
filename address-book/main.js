@@ -19,9 +19,9 @@ const GroupContactController = require("./controller/group-contact");
     > node main.js update-groups <id> <groupName>
     > node main.js delete-groups <id>
     > node main.js show-groups
-    > node main.js create-contact_groups <contactId> <groupId>
-    > node main.js update-contact_groups <id> <contactId> <groupId>
-    > node main.js delete-contact-groups <id> 
+    > node main.js create-group_contact <contactId> <groupId>
+    > node main.js update-group_contact <id> <contactId> <groupId>
+    > node main.js delete-group_contact <id> 
     > node main.js help
 */
 
