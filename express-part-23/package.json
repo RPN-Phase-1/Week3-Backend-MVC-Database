@@ -1,16 +1,19 @@
 {
-  "name": "week3-backend-mvc-database",
+  "name": "express-part-23",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "nodemon --inspect ./src/index.js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.5.0",
     "body-parser": "^1.20.2",
-    "express": "^4.18.2",
-    "sqlite3": "^5.1.6"
+    "crypto": "^1.0.1",
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
