@@ -79,8 +79,9 @@ app.post("/employees", (req, res, next) => {
 });
 
 // patch employee
-app.put("/employees", (req, res, next) => {
+app.put("/employees/:id", (req, res, next) => {
   let body = req.body;
+  let id = req.params.id
 
   db.run(
     `
@@ -88,7 +89,7 @@ app.put("/employees", (req, res, next) => {
     SET name = ?, phoneNumber = ?, position = ?, email = ?
     WHERE id = ?
   `,
-    [body.name, body.phone, body.position, body.email, body.id],
+    [body.name, body.phone, body.position, body.email, id],
     (err) => {
       if (err) {
         res.status(500).json({
@@ -105,15 +106,15 @@ app.put("/employees", (req, res, next) => {
 });
 
 // delete employee
-app.delete("/employees", (req, res, next) => {
-  let body = req.body;
+app.delete("/employees/:id", (req, res, next) => {
+  let id = req.params.id;
 
   db.run(
     `
     DELETE FROM employees
     WHERE id = ?
   `,
-    [body.id],
+    [id],
     (err) => {
       if (err) {
         res.status(500).json({
@@ -121,7 +122,7 @@ app.delete("/employees", (req, res, next) => {
         });
       } else {
         res.status(200).json({
-          data: body,
+          dataId: id,
           message: "Success Delete from Employee",
         });
       }
