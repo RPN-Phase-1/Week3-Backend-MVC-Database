@@ -39,16 +39,35 @@ switch (command) {
     }
     case "update": {
       const [table, ...rest] = argument;
-      ContactController.update(rest);
+      if (table === 'Contact') {
+        ContactController.update(rest);
+      } else if (table === 'Groups') {
+        GroupsController.update(rest);
+      } else if (table === 'ContactGroups') {
+
+      } else {
+        ContactController.help();
+      }
       break;
     }
     case "delete": {
       const [table, id] = argument;
-      ContactController.delete(id);
+      if (table === 'Contact') {
+        ContactController.delete(rest);
+      } else if (table === 'Groups') {
+        GroupsController.delete(rest);
+      } else if (table === 'ContactGroups') {
+
+      } else {
+        ContactController.help();
+      }
       break;
     }
     case "showContact":
       ContactController.show();
+      break;
+    case "showGroups":
+      GroupsController.show();
       break;
     default:
       ContactController.help();
