@@ -70,6 +70,9 @@ switch (command) {
     case "showGroups":
       GroupsController.show();
       break;
+    case "test":
+      GroupContactController.show();
+      break;
     default:
       ContactController.help();
       break;

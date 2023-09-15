@@ -1,8 +1,18 @@
 let sqlite3 = require("sqlite3").verbose();
 let db = new sqlite3.Database("./address_book.db");
 
+db.run(`PRAGMA foreign_keys = ON;`)
 // async function createTables() {
 //   try {
+//     await db.exec(`
+//       CREATE TABLE IF NOT EXISTS GroupContact (
+//         id INTEGER PRIMARY KEY,
+//         ContactId INTEGER NOT NULL,
+//         GroupId INTEGER NOT NULL,
+//         FOREIGN KEY (ContactId) REFERENCES Contact (id) ON UPDATE CASCADE ON DELETE CASCADE,
+//         FOREIGN KEY (GroupId) REFERENCES Groups (id) ON UPDATE CASCADE ON DELETE CASCADE
+//       );
+//     `);
 //     await db.exec(`
 //       CREATE TABLE IF NOT EXISTS Contact (
 //         id INTEGER PRIMARY KEY,
@@ -20,15 +30,6 @@ let db = new sqlite3.Database("./address_book.db");
 //       );
 //     `);
 
-//     await db.exec(`
-//       CREATE TABLE IF NOT EXISTS GroupContact (
-//         id INTEGER PRIMARY KEY,
-//         ContactId INTEGER NOT NULL,
-//         GroupId INTEGER NOT NULL,
-//         FOREIGN KEY (ContactId) REFERENCES Contact (id) ON UPDATE CASCADE ON DELETE CASCADE,
-//         FOREIGN KEY (GroupId) REFERENCES groups (id) ON UPDATE CASCADE ON DELETE CASCADE
-//       );
-//     `);
 
 //     console.log('Tabel berhasil dibuat.');
 //   } catch (error) {
