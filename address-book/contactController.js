@@ -9,7 +9,7 @@ class AddressBookController {
   static create(values) {
     const [name, phoneNumber, company, email] = values;
     Contact.create(name, phoneNumber, company, email).then(() => {
-      AddressBookView.createView();
+      AddressBookView.createView('contact');
     }).catch(err=> {
       AddressBookView.ErrorView(err);
     })
@@ -18,7 +18,7 @@ class AddressBookController {
   static update(values) {
     const [id, name, phoneNumber, company, email] = values;
     Contact.update(id, name, phoneNumber, company, email).then(() => {
-      AddressBookView.updateView();
+      AddressBookView.updateView('contact');
     }).catch(err=> {
       AddressBookView.ErrorView(err);
     })
@@ -26,7 +26,7 @@ class AddressBookController {
 
   static delete(id) {
     Contact.delete(id).then(() => {
-      AddressBookView.deleteView();
+      AddressBookView.deleteView('contact');
     }).catch(err=> {
       AddressBookView.ErrorView(err);
     })

@@ -1,14 +1,14 @@
 class AddressBookView {
-  static createView() {
-      console.log(`save data success`)
+  static createView(table) {
+      console.log(`save data  ${table} success`)
   }
 
-  static updateView() {
-    console.log(`update data success`)
+  static updateView(table) {
+    console.log(`update data  ${table} success`)
   }
 
-  static deleteView() {
-    console.log(`delete data success`)
+  static deleteView(table) {
+    console.log(`delete data ${table} success`)
   }
 
   static ErrorView(message) {
