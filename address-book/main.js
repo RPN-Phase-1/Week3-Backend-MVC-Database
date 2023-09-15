@@ -1,6 +1,6 @@
 let command = process.argv[2];
 let argument = process.argv.slice(3);
-let AddressBookController = require("./controller");
+let ContactController = require("./contactController");
 
 /*
 ====================
@@ -25,20 +25,20 @@ ADDRESS BOOK COMMAND
 switch (command) {
     case "create": {
       const [table, ...rest] = argument;
-      AddressBookController.create(table, rest);
+      ContactController.create(table, rest);
       break;
     }
     case "update": {
       const [table, ...rest] = argument;
-      AddressBookController.update(table, rest);
+      ContactController.update(table, rest);
       break;
     }
     case "delete": {
       const [table, ...rest] = argument;
-      AddressBookController.delete(table, rest);
+      ContactController.delete(table, rest);
       break;
     }
     default:
-      AddressBookController.help();
+      ContactController.help();
       break;
 }
