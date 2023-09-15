@@ -1,10 +1,26 @@
-// let Patient = require("./patient");
-// let Employee = require("./employee")
+let Contact = require("./contact");
 let AddressBookView = require("./view");
 
 class AddressBookController {
   static help() {
     AddressBookView.helpView()
+  }
+
+  static create(values) {
+    const [name, phoneNumber, company, email] = values;
+    Contact.create(name, phoneNumber, company, email).then(() => {
+      AddressBookView.createView();
+    }).catch(err=> {
+      AddressBookView.ErrorView(err);
+    })
+  }
+
+  static show() {
+    Contact.show().then((rows) => {
+      console.log(rows)
+    }).catch(err => {
+      console.log(err)
+    })
   }
 }
 

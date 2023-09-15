@@ -15,11 +15,23 @@ class Contact {
         [newContact.name, newContact.phoneNumber, newContact.company, newContact.email],
         (err) => {
           if (err) {
-              reject(err);
+            reject(err);
           } else {
-              resolve();
+            resolve();
           }
         })
+    })
+  }
+
+  static show() {
+    return new Promise((resolve, reject) => {
+      db.get(`SELECT * FROM CONTACT`,(err, rows) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(rows);
+        }
+      })
     })
   }
 }

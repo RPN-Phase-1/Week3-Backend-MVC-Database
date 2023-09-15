@@ -25,7 +25,7 @@ ADDRESS BOOK COMMAND
 switch (command) {
     case "create": {
       const [table, ...rest] = argument;
-      ContactController.create(table, rest);
+      ContactController.create(rest);
       break;
     }
     case "update": {
