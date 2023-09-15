@@ -1,7 +1,7 @@
 let Contact = require("./contact");
 let AddressBookView = require("./view");
 
-class AddressBookController {
+class ContactController {
   static help() {
     AddressBookView.helpView()
   }
@@ -42,4 +42,4 @@ class AddressBookController {
 }
 
 
-module.exports = AddressBookController;
+module.exports = ContactController;

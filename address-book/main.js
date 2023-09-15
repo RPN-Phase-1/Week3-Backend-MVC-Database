@@ -1,6 +1,7 @@
 let command = process.argv[2];
 let argument = process.argv.slice(3);
 let ContactController = require("./contactController");
+let GroupsController = require("./groupsController");
 
 /*
 ====================
@@ -25,7 +26,15 @@ ADDRESS BOOK COMMAND
 switch (command) {
     case "create": {
       const [table, ...rest] = argument;
-      ContactController.create(rest);
+      if (table === 'Contact') {
+        ContactController.create(rest);
+      } else if (table === 'Groups') {
+        GroupsController.create(rest);
+      } else if (table === 'ContactGroups') {
+
+      } else {
+        ContactController.help();
+      }
       break;
     }
     case "update": {

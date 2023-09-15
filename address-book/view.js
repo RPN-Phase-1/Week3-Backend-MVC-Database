@@ -1,10 +1,10 @@
 class AddressBookView {
   static createView(table) {
-      console.log(`save data  ${table} success`)
+      console.log(`save data ${table} success`)
   }
 
   static updateView(table) {
-    console.log(`update data  ${table} success`)
+    console.log(`update data ${table} success`)
   }
 
   static deleteView(table) {
