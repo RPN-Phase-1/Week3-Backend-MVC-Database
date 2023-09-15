@@ -30,14 +30,17 @@ switch (command) {
     }
     case "update": {
       const [table, ...rest] = argument;
-      ContactController.update(table, rest);
+      ContactController.update(rest);
       break;
     }
     case "delete": {
-      const [table, ...rest] = argument;
-      ContactController.delete(table, rest);
+      const [table, id] = argument;
+      ContactController.delete(id);
       break;
     }
+    case "showContact":
+      ContactController.show();
+      break;
     default:
       ContactController.help();
       break;

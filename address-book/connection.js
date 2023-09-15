@@ -25,8 +25,8 @@ let db = new sqlite3.Database("./address_book.db");
 //         id INTEGER PRIMARY KEY,
 //         ContactId INTEGER NOT NULL,
 //         GroupId INTEGER NOT NULL,
-//         FOREIGN KEY (ContactId) REFERENCES Contact (id),
-//         FOREIGN KEY (GroupId) REFERENCES groups (id)
+//         FOREIGN KEY (ContactId) REFERENCES Contact (id) ON UPDATE CASCADE ON DELETE CASCADE,
+//         FOREIGN KEY (GroupId) REFERENCES groups (id) ON UPDATE CASCADE ON DELETE CASCADE
 //       );
 //     `);
 

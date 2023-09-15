@@ -3,6 +3,14 @@ class AddressBookView {
       console.log(`save data success`)
   }
 
+  static updateView() {
+    console.log(`update data success`)
+  }
+
+  static deleteView() {
+    console.log(`delete data success`)
+  }
+
   static ErrorView(message) {
     console.log(`terjadi kesalahan ${message}`)
   }

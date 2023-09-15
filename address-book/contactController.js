@@ -15,6 +15,23 @@ class AddressBookController {
     })
   }
 
+  static update(values) {
+    const [id, name, phoneNumber, company, email] = values;
+    Contact.update(id, name, phoneNumber, company, email).then(() => {
+      AddressBookView.updateView();
+    }).catch(err=> {
+      AddressBookView.ErrorView(err);
+    })
+  }
+
+  static delete(id) {
+    Contact.delete(id).then(() => {
+      AddressBookView.deleteView();
+    }).catch(err=> {
+      AddressBookView.ErrorView(err);
+    })
+  }
+
   static show() {
     Contact.show().then((rows) => {
       console.log(rows)
