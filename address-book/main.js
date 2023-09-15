@@ -2,6 +2,7 @@ let command = process.argv[2];
 let argument = process.argv.slice(3);
 let ContactController = require("./contactController");
 let GroupsController = require("./groupsController");
+let GroupContactController = require("./groupContactController");
 
 /*
 ====================
@@ -31,7 +32,7 @@ switch (command) {
       } else if (table === 'Groups') {
         GroupsController.create(rest);
       } else if (table === 'ContactGroups') {
-
+        GroupContactController.create(rest);
       } else {
         ContactController.help();
       }
@@ -44,7 +45,7 @@ switch (command) {
       } else if (table === 'Groups') {
         GroupsController.update(rest);
       } else if (table === 'ContactGroups') {
-
+        GroupContactController.update(rest);
       } else {
         ContactController.help();
       }
@@ -53,11 +54,11 @@ switch (command) {
     case "delete": {
       const [table, id] = argument;
       if (table === 'Contact') {
-        ContactController.delete(rest);
+        ContactController.delete(id);
       } else if (table === 'Groups') {
-        GroupsController.delete(rest);
+        GroupsController.delete(id);
       } else if (table === 'ContactGroups') {
-
+        GroupContactController.delete(id);
       } else {
         ContactController.help();
       }
