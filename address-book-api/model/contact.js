@@ -53,7 +53,7 @@ class Contact {
 
   static show() {
     return new Promise((resolve, reject) => {
-      db.all(`SELECT Contact.id,Contact.*, Groups.groupName FROM Contact LEFT JOIN GroupContact on Contact.id = GroupContact.ContactId 
+      db.all(`SELECT Contact.id,Contact.*,GroupContact.GroupId, Groups.groupName FROM Contact LEFT JOIN GroupContact on Contact.id = GroupContact.ContactId 
       LEFT JOIN Groups on Groups.id = GroupContact.GroupId`,(err, rows) => {
         if (err) {
           reject(err);
