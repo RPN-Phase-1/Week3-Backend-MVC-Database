@@ -48,8 +48,9 @@ class Groups {
 
   static show() {
     return new Promise((resolve, reject) => {
-      db.all(`SELECT * FROM Groups INNER JOIN GroupContact on Groups.id = GroupContact.GroupId 
-      INNER JOIN Contact on Contact.id = GroupContact.ContactId`,(err, rows) => {
+      db.all(`SELECT Groups.*, Contact.name,Contact.phoneNumber, Contact.company, Contact.email, GroupContact.ContactId 
+      FROM Groups LEFT JOIN GroupContact on Groups.id = GroupContact.GroupId 
+      LEFT JOIN Contact on Contact.id = GroupContact.ContactId`,(err, rows) => {
         if (err) {
           reject(err);
         } else {
