@@ -14,13 +14,13 @@ router.delete("/contact/:id", contactController.delete);
 
 router
   .route("/groups")
-  // .get(groupController.show)
+  .get(groupController.show)
   .post(groupController.create);
-// router.put("/groups/:id", groupController.updateGroups);
-// router.delete("/groups/:id", groupController.deleteGroups);
+router.put("/groups/:id", groupController.update);
+router.delete("/groups/:id", groupController.delete);
 
 router.post("/contactGroup", contactGroupController.create);
-// router.put("/contactGroup/:id", contactGroupController.updateContactGroup);
-// router.delete("/contactGroup/:id", contactGroupController.deleteContactGroup);
+router.put("/contactGroup/:id", contactGroupController.update);
+router.delete("/contactGroup/:id", contactGroupController.delete);
 
 module.exports = router;
