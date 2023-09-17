@@ -46,7 +46,6 @@ class GroupsController {
       res.status(200).json({
         status: 200,
         message: "Success Delete Groups",
-        data: body,
       });
     } catch (error) {
       res.status(500).json({

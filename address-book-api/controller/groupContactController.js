@@ -45,7 +45,6 @@ class GroupContactController {
       res.status(200).json({
         status: 200,
         message: "Success delete Group Contact",
-        data: body,
       });
     } catch (error) {
       res.status(500).json({
