@@ -1,8 +1,16 @@
-import express from 'express';
-import bodyParser from 'body-parser';
+const express = require("express");
+const bodyParser = require("body-parser");
+const router = require("./router")
 
 const app = express();
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
+
+app.use(router) 
 
 app.use(bodyParser.json());
 
-export default app;
+module.exports = app;
