@@ -46,9 +46,9 @@ const updateGroupsContact = async (req, res) => {
         if(!body.contactId){res.status(400).json({status: 400, message: "Need to input contactId",error:err.message})}
         if(!body.groupId){res.status(400).json({status: 400, message: "Need to input groupId",error:err.message})}
         const result = await ModelGroupsContact.updateGroupsContact(
+          id,
             body.contactId,
-            body.groupId,
-            id
+            body.groupId
         );
 
         res.status(200).json({
