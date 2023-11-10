@@ -60,17 +60,20 @@ class Contact {
         })
     }
 
-    // static show = () => {
-    //     return new Promise((resolve, reject) =>{
-    //         db.all(`SELECT * FROM Contact`,(err,record) => {
-    //             if(err){
-    //                 reject(err)
-    //             }else{
-    //                 resolve(record)
-    //             }
-    //         })
-    //     })
-    // }
+    static show = () => {
+        return new Promise((resolve, reject) =>{
+            db.all(`
+            SELECT * FROM Contact
+            LEFT JOIN GroupContact ON contact.id = GroupContact.ContactId
+            `,(err,record) => {
+                if(err){
+                    reject(err)
+                }else{
+                    resolve(record)
+                }
+            })
+        })
+    }
 }
 
 module.exports = Contact

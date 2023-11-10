@@ -1,8 +1,6 @@
-
-
 class view {
     static createContactView(){
-        console.log(`Data berhasil diinput`)
+        console.log(`Create Data Contact baru berhasil!`)
     }
 
     static updateView(){
@@ -13,8 +11,12 @@ class view {
         console.log(`Data berhasil dihapus`)
     }
 
+    static showView(table){
+        console.table(table)
+    }
+
     static errorView(err){
-        console.log(`FAILED DOING COMMAND check code again ${err}`)
+        console.log(`FAILED DOING COMMAND check code again. ${err}`)
     }
 }
 

@@ -1,6 +1,8 @@
 let command = process.argv[2];
 let argument = process.argv.slice(3);
-let ContactController = require('./controller/contactController')
+let ContactController = require('./controller/contactController');
+const GroupContactController = require('./controller/groupContactController');
+let GroupController = require('./controller/groupController')
 
 /*
 ====================
@@ -21,15 +23,47 @@ ADDRESS BOOK COMMAND
 */
 
 switch (command) {
-    case "create" :
-        ContactController.createContact(argument[0] , argument[1], argument[2], argument[3])
+    case "createContact" :
+        ContactController.create(argument[0] , argument[1], argument[2], argument[3])
         break;
 
-    case "update":
-        ContactController.updateContact(argument[0], argument[1], argument[2], argument[3], argument[4])
+    case "updateContact":
+        ContactController.update(argument[0], argument[1], argument[2], argument[3], argument[4])
         break;
 
-    case "delete":
-        ContactController.deleteContact(argument[0])
+    case "showContact":
+        ContactController.show()
+        break;
+
+    case "deleteContact":
+        ContactController.delete(argument[0])
+        break;
+
+    case "createGroupContact":
+        GroupContactController.create(argument[0] , argument[1])
+        break;
+
+    case "deleteGroupContact":
+        GroupContactController.delete(argument[0])
+        break;
+
+    case "showGroupContact":
+        GroupContactController.show()
+        break;
+
+    case "createGroup":
+        GroupController.create(argument[0])
+        break;
+
+    case "updateGroup":
+        GroupController.update(argument[0], argument[1])
+        break;
+
+    case "deleteGroup":
+        GroupController.delete(argument[0])
+        break;
+
+    case"showGroup":
+        GroupController.show()
         break;
 }
