@@ -2,25 +2,25 @@ const express = require("express");
 const router = express.Router();
 const contactController = require("../controller/contactController");
 const groupController = require("../controller/groupController");
-const contactGroupController = require("../controller/contactGroupController");
+const contactGroupController = require("../controller/groupContactController");
 
 router
   .route("/contact")
-  .get(contactController.show)
+  .get(contactController.read)
   .post(contactController.create);
 
 router.put("/contact/:id", contactController.update);
-router.delete("/contact/:id", contactController.delete);
+router.delete("/contact/:id", contactController.del);
 
 router
   .route("/groups")
-  .get(groupController.show)
+  .get(groupController.read)
   .post(groupController.create);
 router.put("/groups/:id", groupController.update);
-router.delete("/groups/:id", groupController.delete);
+router.delete("/groups/:id", groupController.del);
 
-router.post("/contactGroup", contactGroupController.create);
-router.put("/contactGroup/:id", contactGroupController.update);
-router.delete("/contactGroup/:id", contactGroupController.delete);
+router.post("/groupContact", contactGroupController.create);
+router.put("/groupContact/:id", contactGroupController.update);
+router.delete("/groupContact/:id", contactGroupController.del);
 
 module.exports = router;

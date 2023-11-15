@@ -11,6 +11,8 @@ app.get("/", (req,res) => {
 
 app.use(router)
 
+express.urlencoded({extended : true})
+
 app.listen(port, () => {
     console.log("Server is running in port:" + port)
 })

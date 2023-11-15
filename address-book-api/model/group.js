@@ -2,9 +2,8 @@ let db = require('../connection/connection')
 
 
 let create = (groupName) => {
-  return new Promise((resolve, reject) =>{
-    db.run(`INSERT INTO Group VALUES(null, ?)`,[groupName],
-    (err) =>{
+  return new Promise((resolve,reject) => {
+    db.run(`INSERT INTO Group VALUES (null, ?)`, groupName, (err) => {
       if(err){
         reject(err)
       }else{
@@ -15,14 +14,17 @@ let create = (groupName) => {
 }
 
 let read = () => {
-  db.all(`SELECT * FROM Group
-          LEFT JOIN groupContact on Group.id = groupContact.groupId`,(err,data) =>{
-            if(err){
-              reject(err)
-            }else{
-              resolve(data)
-            }
-          })
+  return new Promise((resolve,reject) => {
+    db.all(`SELECT * FROM Group
+            LEFT JOIN groupContact on Group.id = groupContact.groupId`,(err,data) =>{
+              if(err){
+                reject(err)
+              }else{
+                resolve(data)
+              }
+            })
+
+  })
 }
 
 let update = (groupName, id) => {

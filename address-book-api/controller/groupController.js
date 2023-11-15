@@ -72,9 +72,18 @@ let update = async (req, res) => {
 
 let del = async (req, res) => {
     try{
-        const params = 
-        await Group.del()
-
+        const params = req.params.id
+        await Group.del(params)
+        res.status(200).json({
+            status: 200,
+            message: "Delete Data Success. ID:", params
+        })
+    }catch(error){
+        res.status(500).json({
+            status: 500,
+            message: "Failed Delete Data",
+            error:error.message
+        })
     }
 }
 
