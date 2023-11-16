@@ -19,7 +19,7 @@ let read = () => {
     return new Promise((resolve,reject) =>{
         db.all(`SELECT *
                 FROM Contact
-                LEFT JOIN groupContact ON Contact.id = groupContact.contactId`,
+                INNER JOIN groupContact ON Contact.id = groupContact.contactId`,
                 (err,data) => {
                     if(err){
                         reject(err)

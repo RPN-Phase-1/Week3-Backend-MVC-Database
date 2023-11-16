@@ -3,7 +3,7 @@ let db = require('../connection/connection')
 
 let create = (groupName) => {
   return new Promise((resolve,reject) => {
-    db.run(`INSERT INTO Group VALUES (null, ?)`, groupName, (err) => {
+    db.run(`INSERT INTO Groups VALUES (null, ?)`, groupName, (err) => {
       if(err){
         reject(err)
       }else{
@@ -15,8 +15,8 @@ let create = (groupName) => {
 
 let read = () => {
   return new Promise((resolve,reject) => {
-    db.all(`SELECT * FROM Group
-            LEFT JOIN groupContact on Group.id = groupContact.groupId`,(err,data) =>{
+    db.all(`SELECT * FROM Groups
+            INNER JOIN groupContact on Group.id = groupContact.groupId`,(err,data) =>{
               if(err){
                 reject(err)
               }else{
@@ -28,7 +28,7 @@ let read = () => {
 }
 
 let update = (groupName, id) => {
-  db.run(`UPDATE Group
+  db.run(`UPDATE Groups
           SET groupName = ?
           WHERE id = ?`, [groupName, id],
           (err) => {
@@ -41,7 +41,7 @@ let update = (groupName, id) => {
 }
 
 let del = (id) => {
-  db.run(`DELETE FROM Group WHERE id = ?`, [id],
+  db.run(`DELETE FROM Groups WHERE id = ?`, [id],
   (err) => {
     if(err){
       reject(err)
