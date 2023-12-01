@@ -72,19 +72,29 @@ async function createTables() {
   // Panggil fungsi insertData untuk menambahkan data ke tabel
  // insertData();
 
-  async function displayData() {
+ async function getData(query) {
+    return new Promise((resolve, reject) => {
+      db.all(query, (err, rows) => {
+        if (err) reject(err);
+        else resolve(rows);
+      });
+    });
+  }
+
+   async function displayData() {
     try {
-      const karyawanRows = await db.all('SELECT * FROM Karyawan');
+      const karyawanRows = await getData('SELECT * FROM Karyawan');
       console.log('Data Karyawan:');
       console.table(karyawanRows);
   
-      const proyekRows = await db.all('SELECT * FROM Proyek');
+      const proyekRows = await getData('SELECT * FROM Proyek');
       console.log('Data Proyek:');
       console.table(proyekRows);
   
-      const pekerjaanRows = await db.all('SELECT * FROM Pekerjaan');
+      const pekerjaanRows = await getData('SELECT * FROM Pekerjaan');
       console.log('Data Pekerjaan:');
       console.table(pekerjaanRows);
+    
     } catch (error) {
       console.error('Gagal mengambil data:', error.message);
     }
