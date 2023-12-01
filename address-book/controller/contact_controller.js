@@ -37,6 +37,17 @@ class ContactController{
             console.log(error);
         }
     }
+
+    static async showContact(){
+        try{
+            await Contact.show().then((rows)=>{
+                View.showContactView(rows);
+            })
+            
+        }catch (error){
+            console.log(error);
+        }
+    }
 }
 
 

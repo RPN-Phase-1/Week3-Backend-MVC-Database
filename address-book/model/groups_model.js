@@ -1,25 +1,18 @@
 let db = require("../connection/connection.js");
 
-
-
-class Contact{
-    constructor(name, phoneNumber, company, email){
-        this.name = name,
-        this.phoneNumber = phoneNumber,
-        this.company = company,
-        this.email = email
+class Groups{
+    constructor(groupName){
+        this.groupName = groupName
     }
 
-    
-
-    static async create(name, phoneNumber, company, email){
-        let newContact = new Contact(name, phoneNumber, company, email);
+    static async create(groupName){
+        let newGroup = new Groups(groupName);
         return new Promise((resolve, reject)=>{
           
               
                 db.run(
-                    `INSERT INTO Contact VALUES (null,?,?,?,?)`,
-                    [newContact.name, newContact.phoneNumber, newContact.company, newContact.email],
+                    `INSERT INTO Groups VALUES (null,?)`,
+                    [newGroup.groupName],
                  
                 (err)=>{
                     if(err){
@@ -34,11 +27,14 @@ class Contact{
         })
     }
 
-    static async update(id,name,phoneNumber,company,email){
-        return new Promise((resolve,reject)=>{
+    static async update(id, groupName){
+        
+        return new Promise((resolve, reject)=>{
+          
+              
             db.run(
-                `UPDATE Contact SET name=?, phoneNumber=?, company=?, email=? WHERE id=?`,
-                [name,phoneNumber,company,email,id],
+                `UPDATE Groups SET groupName=? WHERE id=?`,
+                [groupName, id],
                 (err)=>{
                     if(err){
                         reject(err);
@@ -47,12 +43,14 @@ class Contact{
                     }
                 }
             )
+           
+           
         })
     }
 
-    static async delete(id){
-        return new Promise((resolve,reject)=>{
-            db.run(`DELETE FROM Contact WHERE id=?`,
+    static async delete(id){       
+        return new Promise((resolve, reject)=>{          
+            db.run(`DELETE FROM GroupContact WHERE Groupid=?`,
             [id],
             (err)=>{
                 if(err){
@@ -61,7 +59,15 @@ class Contact{
                     resolve();
                 }
             }
-            )
+            );
+            
+            db.run(`DELETE FROM Groups WHERE id=?`, [id], (err) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    resolve();
+                }
+            });
         })
     }
 
@@ -69,10 +75,11 @@ class Contact{
         return new Promise((resolve, reject)=>{
             db.all(`
             select * from 
-            Contact join GroupContact
-            on Contact.id = GroupContact.ContactId
-            join Groups 
-            on GroupContact.GroupId = Groups.id;
+            Groups join GroupContact
+            on Groups.id = GroupContact.GroupId
+            join Contact
+            on GroupContact.ContactId = Contact.id;
+
 
             `,
             (err, rows)=>{
@@ -84,8 +91,6 @@ class Contact{
             })
         })
     }
-
-
 }
 
-module.exports = Contact;
+module.exports = Groups;
