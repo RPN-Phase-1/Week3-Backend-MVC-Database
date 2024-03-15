@@ -1,4 +1,4 @@
-let sqlite3 = require("sqlite3").verbose();
-let db = new sqlite3.Database("./address_book.db");
+let sqlite = require('sqlite3').verbose()
+let db = new sqlite.Database("./address_book.db")
 
-module.exports = db;
+module.exports = db
