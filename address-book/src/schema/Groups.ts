@@ -48,7 +48,6 @@ export class GroupsSchemaTable extends SchemaTable {
     `;
 
     const bindings = [
-      id,
       id
     ]
 
